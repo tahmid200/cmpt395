@@ -1,0 +1,41 @@
+
+
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+        {% block head %}
+
+        <title>Base</title>
+
+        {% endblock %}
+
+    </head>
+    <body>
+ <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="/">Carraway Schedule System</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        <form class="form-inline mt-2 mt-md-0">
+          <li><a href="/account/register">Register</a></li>
+        </form>
+      </div>
+    </nav>
+
+
+    {% block body %}
+        <h1>Base</h1>
+
+        {% endblock %}
+
+
+
+    </body>
+</html>
+

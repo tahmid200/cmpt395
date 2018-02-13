@@ -1,0 +1,16 @@
+<!-- templates/base.html -->
+{% load staticfiles %}
+<html>
+    <head>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <meta charset="utf-8">
+        <title>{% block title %}Carraway Admin{% endblock %}</title>
+    </head>
+    <body>
+        <main>
+            {% block content %}
+            {% endblock %}
+        </main>
+    </body>
+</html>

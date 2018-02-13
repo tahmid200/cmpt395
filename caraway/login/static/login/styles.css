@@ -32,3 +32,9 @@ body {
   color: #404040;
   background: #0ca3d2;
 }
+
+img{
+    position: absolute;
+    right: 0;
+    padding: 100 2000px;
+}
