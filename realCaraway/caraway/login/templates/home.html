@@ -1,0 +1,33 @@
+{% load staticfiles %}
+
+<!doctype html>
+
+<head>
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="{% static 'login/styles.css' %}">
+
+   <title>Carraway Elementary School</title>
+</head>
+
+<body>
+   {% if user.is_authenticated %}
+   Hi {{ user.username }}!
+   {% else %}
+   <p>You are not logged in</p>
+   <a href="{% url 'login' %}">login</a> |
+   {% endif %}
+   <p><a href="{% url 'logout' %}">
+      <img type = "image" src="{% static 'images/LogoutImage.png' %}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
+   </a></p>
+
+   <div id='cssmenu'>
+      <ul>
+         <li class='active'><a href='#'><span>Home</span></a></li>
+         <li><a href='#'><span>Schedule</span></a></li>
+         <li><a href="{% url 'signup' %}"><span>Registration</span></a></li>
+         <li class='last'><a href='#'><span>Contact</span></a></li>
+      </ul>
+   </div>
+
+</body>

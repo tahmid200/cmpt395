@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block titile %}Login{%endblock%}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'login/style.css' %}">
+  <section class="container">
+    <div class="login">
+      <h1>Carraway Schedule System</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <a class="submit"><input type="submit" name="commit" value="login" ></a>
+      </form>
+    </div>
+  </section>
+{% endblock %}

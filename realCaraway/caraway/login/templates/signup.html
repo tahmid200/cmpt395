@@ -1,0 +1,19 @@
+{% load staticfiles %}
+<!doctype html>
+
+<head>
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="{% static 'login/registration.css' %}">
+   <meta charset='utf-8'>
+</head>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'home' %}">
+        <img type = "image" src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
+    </a>
+
+    <button type="submit">Sign up</button>
+</form>
