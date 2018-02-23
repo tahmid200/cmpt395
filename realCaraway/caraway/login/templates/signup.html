@@ -2,14 +2,32 @@
 <!doctype html>
 
 <head>
+    <!--bootstrap.css-->
    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
    <link rel="stylesheet" href="{% static 'login/registration.css' %}">
    <meta charset='utf-8'>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
+<!--Creating the drop down table for setting priority-->
+<p>
+    <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownPriority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                User Type<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Parent</a></li>
+                <li><a href="#">Admin</a></li>
+                <li><a href="#">Class</a></li>
+            </ul>
+    </div>
+</p>
 
 <form method="post">
     {% csrf_token %}
+
+    <!--this creates the registration can be found in forms.py-->
     {{ form.as_p }}
     <a href="{% url 'home' %}">
         <img type = "image" src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
