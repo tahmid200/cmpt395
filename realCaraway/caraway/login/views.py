@@ -4,7 +4,6 @@ from django.shortcuts import render
 
 from .forms import CustomUserCreationForm
 
-#the signup class that will use the signup.html template that is located in templates
 class SignUp(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
