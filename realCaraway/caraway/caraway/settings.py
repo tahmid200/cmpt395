@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
-
+import dateutil
+import sys
+import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -37,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'swingtime',
+    'karate',
     'login',
 ]
 
@@ -63,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'swingtime.context_processors.current_datetime',
             ],
         },
     },
@@ -117,6 +122,17 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
+SWINGTIME = {
+    'TIMESLOT_START_TIME': datetime.time(14),
+    'TIMESLOT_END_TIME_DURATION': datetime.timedelta(hours=6.5)
+}
+
+try:
+    import django_extensions
+except ImportError:
+    pass
+else:
+    INSTALLED_APPS += ('django_extensions',)
 
 STATIC_URL = '/static/'
 

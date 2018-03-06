@@ -1,0 +1,36 @@
+{% load staticfiles %}
+<!doctype html>
+
+<head>
+    <!--bootstrap.css-->
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+   <link rel="stylesheet" href="{% static 'login/registration.css' %}">
+   <meta charset='utf-8'>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<h1>Class Signup</h1>
+<!--Creating the drop down table for setting priority-->
+<p>
+        <div class="dropdown">
+            <label for = "User Type">User Types </label>
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownPriority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Class<span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="../">Parent</a></li>
+                <li><a href="../admin">Admin</a></li>
+                <li><a href="./">Class</a></li>
+            </ul>
+    </div>
+</p>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'home' %}">
+        <img type = "image" src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
+    </a>
+
+    <button type="submit">Sign up</button>
+</form>
