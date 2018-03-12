@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'swingtime',
     'karate',
     'login',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
