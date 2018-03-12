@@ -16,8 +16,19 @@ class ParentCreationForm(UserCreationForm):
             'last_name',
             'email',
             'password1',
-            'password2'
-)
+            'password2',
+            'children1',
+            'children2',
+        )
+    def save(self,commit = True):
+        user = super(ParentCreationForm,self).save(commit = False)
+        user.children1.cleaned_data['children1']
+        user.children2.cleaned_data['children2']
+    
+        if commit:
+            user.save()
+
+        return user
 #Admin
 class AdminCreationForm(UserCreationForm):
 
@@ -40,7 +51,7 @@ class CustomUserChangeForm(UserChangeForm):
         fields = UserChangeForm.Meta.fields
 
 class ClassCreationForm(forms.Form):
-    class_name = forms.CharField(label = 'Class Name',max_length=50)
+    classroom = forms.CharField(label = 'Class Name',max_length=50)
 
 
 
