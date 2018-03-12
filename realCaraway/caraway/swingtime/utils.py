@@ -15,6 +15,7 @@ from .conf import swingtime_settings
 from .models import EventType, Occurrence
 
 
+
 def time_delta_total_seconds(time_delta):
     '''
     Calculate the total number of seconds represented by a 
@@ -141,21 +142,21 @@ def create_timeslot_table(
 
     # build a mapping of timeslot "buckets"
     timeslots = {}
-    n = dtstart
+    n = dtstart.replace(tzinfo=dt.tzinfo)
     while n <= dtend:
         timeslots[n] = {}
         n += time_delta
 
     # fill the timeslot buckets with occurrence proxies
     for item in sorted(items):
-        if item.end_time <= dtstart:
+        if item.end_time.replace(tzinfo=dt.tzinfo) <= dtstart.replace(tzinfo=dt.tzinfo):
             # this item began before the start of our schedle constraints
             continue
 
-        if item.start_time > dtstart:
-            rowkey = current = item.start_time
+        if item.start_time.replace(tzinfo=dt.tzinfo) > dtstart.replace(tzinfo=dt.tzinfo):
+            rowkey = current = item.start_time.replace(tzinfo=dt.tzinfo)
         else:
-            rowkey = current = dtstart
+            rowkey = current = dtstart.replace(tzinfo=dt.tzinfo)
 
         timeslot = timeslots.get(rowkey, None)
         if timeslot is None:
@@ -173,7 +174,7 @@ def create_timeslot_table(
                 proxy = proxy_class(item, colkey)
                 timeslot[colkey] = proxy
 
-                while current < item.end_time:
+                while current < item.end_time.replace(tzinfo=dt.tzinfo):
                     rowkey = current
                     row = timeslots.get(rowkey, None)
                     if row is None:
