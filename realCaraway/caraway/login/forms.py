@@ -7,9 +7,9 @@ from .models import CustomUser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-user = get_user_model()
+User = get_user_model()
 
-class ParentCreationForm(UserCreationForm):
+class ParentCreationForm(forms.Form):
     username = forms.CharField(label = 'Username')
     first_name = forms.CharField(label = 'First Name')
     last_name = forms.CharField(label = 'Last Name')
@@ -42,29 +42,29 @@ class ParentCreationForm(UserCreationForm):
 
         return password2
 
-    def clean_children1(self):
-        children1 = self.cleaned_data['children'].lower()
-        r = User.objects.filter(children1=children1)
-        if r.count():
-            raise ValidationError("Children already exists")
-        return children1
+    #def clean_children1(self):
+    #    children1 = self.cleaned_data['children1'].lower()
+    #    r = User.objects.filter(children1=children1)
+    #    if r.count():
+    #        raise ValidationError("Children already exists")
+    #    return children1
 
-    def clean_children2(self):
-        children2 = self.cleaned_data['children'].lower()
-        r = User.objects.filter(children2=children2)
-        if r.count():
-            raise ValidationError("Children already exists")
-        return children2
+    #def clean_children2(self):
+    #    children2 = self.cleaned_data['children2'].lower()
+    #    r = User.objects.filter(children2=children2)
+    #    if r.count():
+    #        raise ValidationError("Children already exists")
+    #    return children2
 
-    def save(self, commit=True):
-        user = User.objects.create_user(
-            self.cleaned_data['username'],
-            self.cleaned_data['email'],
-            self.cleaned_data['password1'],
-            self.cleaned_data['children1'],
-            self.cleaned_data['children2'],
-        )
-        return user
+    #def save(self, commit=True):
+    #    user = User.objects.create_user(
+    #        self.cleaned_data['username'],
+    #        self.cleaned_data['email'],
+    #        self.cleaned_data['password1'],
+    #        self.cleaned_data['children1'],
+    #        self.cleaned_data['children2'],
+    #    )
+    #    return user
 
 
 #parent
@@ -108,7 +108,7 @@ class AdminCreationForm(UserCreationForm):
 )
 
     def save(self, commit=True):
-        user = super(ParentCreationForm, self).save(commit=False)
+        user = super(AdminCreationForm, self).save(commit=False)
 
 
         if commit:
@@ -128,12 +128,3 @@ class CustomUserChangeForm(UserChangeForm):
 
 class ClassCreationForm(forms.Form):
     classroom = forms.CharField(label = 'Class Name',max_length=50)
-
-
-
-#class ClassCreationForm(forms.ModelForm):
-#    class Meta:
-#        model = CustomUser
-#        widgets = {
-#          'classroom': forms.Textarea(attrs={'rows':1, 'cols':85}),
-#        }
