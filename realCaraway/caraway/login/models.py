@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, UserManager, User
+from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
 # creates a custom user model
@@ -9,13 +9,13 @@ class CustomUser(AbstractUser):
     objects = CustomUserManager()
     #children1 = models.CharField(max_length=255)
     #children2 = models.CharField(max_length=255)
+
 class ClassCreation(models.Model):
     classroom = models.CharField(max_length=255)
 
 class ParentCreation(models.Model):
     username = models.CharField(max_length=254, blank=True)
     email = models.EmailField(blank=True, unique=True)
-    password1 = models.CharField(max_length=255, blank=True)
     password2 = models.CharField(max_length=254, blank=True)
     children1 = models.CharField(max_length=255, blank=True)
     children2 = models.CharField(max_length=255, blank=True)
