@@ -18,8 +18,8 @@ __all__ = (
     'create_event'
 )
 
-class ClassCreation(models.Model):
-    classroom = models.CharField(max_length=255)
+#class ClassCreation(models.Model):
+ #   classroom = models.CharField(max_length=255)
 
 
 class Note(models.Model):
@@ -49,7 +49,7 @@ class EventType(models.Model):
     '''
     Simple ``Event`` classifcation.
     '''
-    abbr = models.CharField(_('abbreviation'), max_length=4, unique=True)
+    abbr = models.CharField(_('abbreviation'), max_length=4, unique=False)
     label = models.CharField(_('label'), max_length=50)
 
     class Meta:

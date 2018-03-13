@@ -10,8 +10,8 @@ class CustomUser(AbstractUser):
     #children1 = models.CharField(max_length=255)
     #children2 = models.CharField(max_length=255)
 
-class ClassCreation(models.Model):
-    classroom = models.CharField(max_length=255)
+#class ClassCreation(models.Model):
+ #   classroom = models.CharField(max_length=255)
 
 class ParentCreation(models.Model):
     username = models.CharField(max_length=254, blank=True)

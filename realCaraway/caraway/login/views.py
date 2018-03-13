@@ -5,7 +5,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 
-from .models import ClassCreation, ParentCreation
+from .models import ParentCreation
+from swingtime.models import EventType
+from swingtime.forms import EventForm
 from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm
 
 
@@ -92,7 +94,7 @@ def SignUpClass(request):
         if form.is_valid():
             # redirect to a new URL:
             classroom = request.POST.get('classroom','')
-            classObj = ClassCreation(classroom = classroom)
+            classObj = EventType(label = classroom)
             classObj.save()
 
             return HttpResponseRedirect('/users/signup/class/')
