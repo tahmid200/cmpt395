@@ -18,6 +18,10 @@ __all__ = (
     'create_event'
 )
 
+class ClassCreation(models.Model):
+    classroom = models.CharField(max_length=255)
+
+
 class Note(models.Model):
     '''
     A generic model for adding simple, arbitrary notes to other models such as

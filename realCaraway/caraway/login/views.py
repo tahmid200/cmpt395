@@ -15,7 +15,7 @@ class SignUp(generic.CreateView):
 #admin
 class SignUpAdmin(generic.CreateView):
     form_class = AdminCreationForm
-    success_url = reverse_lazy('login')
+    success_url = reverse_lazy('admin')
     template_name = 'signupAdmin.html'
 
 def SignUpClass(request):

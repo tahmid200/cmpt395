@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import AbstractUser, UserManager, User
 from django.db import models
 
 # creates a custom user model
@@ -10,3 +10,4 @@ class CustomUser(AbstractUser):
 
 class ClassCreation(models.Model):
     classroom = models.CharField(max_length=255)
+

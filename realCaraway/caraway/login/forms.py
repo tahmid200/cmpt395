@@ -43,6 +43,18 @@ class AdminCreationForm(UserCreationForm):
             'password2'
 )
 
+    def save(self, commit=True):
+        user = super(ParentCreationForm, self).save(commit=False)
+
+
+        if commit:
+            user.is_superuser=True
+            user.is_staff=True
+            user.save()
+
+        return user
+
+
 
 class CustomUserChangeForm(UserChangeForm):
 
