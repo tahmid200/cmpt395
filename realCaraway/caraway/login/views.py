@@ -1,15 +1,16 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, redirect
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
 
 from .models import ParentCreation
 from swingtime.models import EventType
 from swingtime.forms import EventForm
-from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm
-
+from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User
+from karate.urls import urlpatterns
 
 #def SignUp(request):
  #   if request.method == 'POST':
@@ -107,6 +108,9 @@ def SignUpClass(request):
 
 
 
-
+@login_required
 def Home(request):
-    return render(request, 'home.html')
+    if request.user.is_superuser:
+        return render(request, 'home.html')
+    else:
+        return HttpResponseRedirect('/swingtime/karate/')
