@@ -8,8 +8,6 @@ class CustomUserManager(UserManager):
 class CustomUser(AbstractUser):
     objects = CustomUserManager()
 
-#class ClassCreation(models.Model):
- #   classroom = models.CharField(max_length=255)
 
 class ParentCreation(models.Model):
     username = models.CharField(max_length=254)
@@ -19,4 +17,6 @@ class ParentCreation(models.Model):
     children2 = models.CharField(max_length=255)
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-
+    #curent_hours = models.IntegerField
+    #monthly_hours = models.IntegerField
+    #total_hours = models.IntegerField

@@ -14,42 +14,51 @@ from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, Use
 from karate.urls import urlpatterns
 
 #parent
+# def SignUp(request):
+#     if request.method == 'POST':
+#         form = ParentCreationForm(request.POST)
+#         if form.is_valid():
+#             # redirect to a new URL:
+#             username = request.POST.get('username','')
+            
+#             email = request.POST.get('email','')
+            
+#             password2 = request.POST.get('password','')
+            
+#             children1 = request.POST.get('children1','')
+            
+#             children2 = request.POST.get('children2','')
+
+#             first_name = request.POST.get('first_name','')
+            
+#             last_name = request.POST.get('last_name','')
+            
+#             obj = ParentCreation(username = username,email = email,password2 = password2,children1 = children1,children2 = children2,first_name = first_name,last_name = last_name)
+#             user = authenticate(username = username,password2=password2)
+#             login(request,user)
+#             obj.save()
+            
+
+#             return HttpResponseRedirect('/users/signup/')
+
+# #     # if a GET (or any other method) we'll create a blank form
+#     else:
+#         form = ParentCreationForm()
+
+#     return render(request, 'signup.html', {'form': form})
+#----------------------------------------------------------------------------------------
 def SignUp(request):
     if request.method == 'POST':
         form = ParentCreationForm(request.POST)
         if form.is_valid():
-            # redirect to a new URL:
-            username = request.POST.get('username','')
-            
-            email = request.POST.get('email','')
-            
-            password2 = request.POST.get('password','')
-            
-            children1 = request.POST.get('children1','')
-            
-            children2 = request.POST.get('children2','')
-
-            first_name = request.POST.get('first_name','')
-            
-            last_name = request.POST.get('last_name','')
-            
-            obj = ParentCreation(username = username,email = email,password2 = password2,children1 = children1,children2 = children2,first_name = first_name,last_name = last_name)
-            user = authenticate(username = username,password2=password2)
-            login(request,user)
-            obj.save()
-            
-
-            return HttpResponseRedirect('/users/signup/')
-
-#     # if a GET (or any other method) we'll create a blank form
+            form.save()
+            return HttpResponseRedirect('/users/signup')
     else:
         form = ParentCreationForm()
-
+        
     return render(request, 'signup.html', {'form': form})
 
-
-
-
+#-------------------------------------------------------------------------------------------------
 
 #admin
 class SignUpAdmin(generic.CreateView):
