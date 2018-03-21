@@ -9,38 +9,13 @@ from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 
-# class ParentCreationForm(forms.Form):
-#     username = forms.CharField(max_length=30)
-#     first_name = forms.CharField(max_length=30)
-#     last_name = forms.CharField(max_length=30)
-#     email = forms.EmailField(max_length=254)
-#     password1 = forms.CharField(widget=forms.PasswordInput)
-#     password2 = forms.CharField(widget=forms.PasswordInput)
-#     children1 = forms.CharField(max_length=30)
-#     children2 = forms.CharField(max_length=30)
-
-#     def clean(self):
-#         cleaned_data = super(ParentCreationForm,self).clean()
-#         username = cleaned_data.get('name')
-#         first_name = cleaned_data.get('first_name')
-#         last_name = cleaned_data.get('last_name')
-#         email = cleaned_data.get('email')
-#         children1 = cleaned_data.get('children1')
-#         children2 = cleaned_data.get('children2')
-#         password1 = cleaned_data.get('password1')
-#         password2 = cleaned_data.get('password2')
-
-#         if not email and not username and not first_name and not last_name:
-#             raise forms.ValidationError("Missing Fields")
-
-#         elif password1 != password2:
-#             raise forms.ValidationError("Incorrect Password")
+#Parent
 #-----------------------------------------------------------------------------------------
 class ParentCreationForm(UserCreationForm):
     children1 = forms.CharField(label = 'children1')
     children2 = forms.CharField(label = 'children2') 
     email = forms.EmailField(required = True) 
-    #model = CustomUser
+
     class Meta(UserCreationForm):  
         model = User
         fields = (
@@ -97,6 +72,8 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = UserChangeForm.Meta.fields
-
+        
+#class ------------------------------------------------------------------------------------------
 class ClassCreationForm(forms.Form):
     classroom = forms.CharField(label = 'Class Name',max_length=50)
+#---------------------------------------------------------------------------------------------
