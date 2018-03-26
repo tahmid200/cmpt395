@@ -77,7 +77,7 @@ class BaseOccurrenceProxy(object):
 
 class DefaultOccurrenceProxy(BaseOccurrenceProxy):
 
-    CONTINUATION_STRING = '^^'
+    CONTINUATION_STRING = "------------"
     
     def __init__(self, *args, **kws):
         super(DefaultOccurrenceProxy, self).__init__(*args, **kws)
@@ -88,7 +88,7 @@ class DefaultOccurrenceProxy(BaseOccurrenceProxy):
         
         self._str = itertools.chain(
             (link,),
-            itertools.repeat(self.CONTINUATION_STRING)
+            itertools.repeat(self.title)
         )
 
     def __str__(self):

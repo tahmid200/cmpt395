@@ -1,6 +1,7 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
+
 {{ form.text|attr:"rows:1"|attr:"cols:85" }}
 <!doctype html>
 
@@ -30,6 +31,22 @@
             </ul>
     </div>
 </p>
+
+<div class="container">
+           <div class="row">
+                <div class="col-xs-12">
+        {% if messages %}
+
+
+    {% for message in messages %}
+    <p>{{ message }}
+    </p>
+    {% endfor %}
+    {% endif %}
+            </div>
+        </div>
+    </div>
+<div class="container">
 <form role = "form" action = "" method="post">
     {% csrf_token %}
     {{ form.as_p }}
@@ -39,3 +56,20 @@
 
     <button type="submit">Sign up</button>
 </form>
+    </div>
+<br>
+<br>
+<body>
+{{ rawdata }}
+</body>
+<div class="container">
+    <ul>
+        {% for stuff in rawdata %}
+            {{ stuff.label }}
+        {% endfor %}
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+</div>
+

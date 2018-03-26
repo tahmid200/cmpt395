@@ -25,6 +25,24 @@
             </ul>
     </div>
 </p>
+
+<div class="container">
+           <div class="row">
+                <div class="col-xs-12">
+        {% if messages %}
+
+
+    {% for message in messages %}
+    <p>{{ message }}
+    </p>
+    {% endfor %}
+    {% endif %}
+            </div>
+        </div>
+    </div>
+
+<div class="container">
+
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
@@ -34,3 +52,4 @@
 
     <button type="submit">Sign up</button>
 </form>
+    </div>

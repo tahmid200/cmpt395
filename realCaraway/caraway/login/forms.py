@@ -7,6 +7,7 @@ from .models import CustomUser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 User = get_user_model()
 
 #Parent
@@ -62,6 +63,7 @@ class AdminCreationForm(UserCreationForm):
             user.is_superuser=True
             user.is_staff=True
             user.save()
+
 
         return user
 
