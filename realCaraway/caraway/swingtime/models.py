@@ -60,11 +60,8 @@ class EventType(models.Model):
     def __str__(self):
         return self.label
 
-    def get_all_objects(self):
-        queryset = self.objects.all()
-        # can use the below method also
-        # queryset = self.__class__.objects.all()
-        return queryset
+    def __iter__(self):
+        return self.label
 
 class Event(models.Model):
     '''

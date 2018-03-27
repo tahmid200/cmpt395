@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from .models import CustomUser
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from swingtime.forms import *
+
 
 
 User = get_user_model()

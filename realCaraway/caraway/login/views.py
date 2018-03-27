@@ -9,8 +9,9 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, get_user_model
 from django.views.generic import ListView
 from .models import ParentCreation
-from swingtime.models import EventType
-from swingtime.forms import EventForm
+from swingtime.models import *
+from swingtime.views import *
+from swingtime.forms import *
 from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User
 from karate.urls import urlpatterns
 
@@ -19,6 +20,14 @@ from karate.urls import urlpatterns
 #parent
 #----------------------------------------------------------------------------------------
 def SignUp(request):
+    jokes2 = []
+    jokes = EventType.objects.all()
+    for i in jokes:
+        jokes2.append(i.label)
+    #jokes2.remove('EventType')
+
+    messages.success(request, jokes2)
+
     if request.method == 'POST':
         form = ParentCreationForm(request.POST)
         if form.is_valid():
