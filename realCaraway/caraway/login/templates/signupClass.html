@@ -31,20 +31,25 @@
             </ul>
     </div>
 </p>
+{{ length }}
+<div class="container">
+    <h3> Current Sections: </h3>
+    <br>
+  {% for message in classes %}
+  <li>
+      {{ message }}
+  </li>
+
+  {% endfor %}
+    </div>
+
+
+
 
 <div class="container">
            <div class="row">
                 <div class="col-xs-12">
-        {% if messages %}
 
-
-    {% for message in messages %}
-    <p>
-        {{ message }}
-    </p>
-    {% endfor %}
-
-    {% endif %}
 
             </div>
         </div>
@@ -57,8 +62,10 @@
         <img type = "image" src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
     </a>
 
-    <button type="submit">Sign up</button>
+    <button type="submit" onclick="location.href=location.href">Sign up</button>
+
 </form>
+
     </div>
 <br>
 <br>
@@ -67,8 +74,17 @@
     <ul>
 
 
-  <li>Tea</li>
-  <li>Milk</li>
+
+
+
+
+
+
+
+
+
+
 </ul>
+
 </div>
 

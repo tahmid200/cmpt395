@@ -20,13 +20,7 @@ from karate.urls import urlpatterns
 #parent
 #----------------------------------------------------------------------------------------
 def SignUp(request):
-    jokes2 = []
-    jokes = EventType.objects.all()
-    for i in jokes:
-        jokes2.append(i.label)
-    #jokes2.remove('EventType')
 
-    messages.success(request, jokes2)
 
     if request.method == 'POST':
         form = ParentCreationForm(request.POST)
@@ -52,9 +46,14 @@ class SignUpAdmin(generic.CreateView):
 
 
 #class-------------------------------------------------------------------------------------------
+
 def SignUpClass(request):
 
-
+    classinfo = EventType.objects.all()
+    length = len(classinfo)
+    classes = []
+    for i in range(length):
+        classes.append(classinfo[i])
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ClassCreationForm(request.POST)
@@ -64,7 +63,8 @@ def SignUpClass(request):
             classroom = request.POST.get('classroom','')
             classObj = EventType(label = classroom)
             classObj.save()
-            messages.success(request, "Success!")
+
+            #messages.success(request, "Success!")
 
             return HttpResponseRedirect('/users/signup/class/')
 
@@ -72,9 +72,9 @@ def SignUpClass(request):
     else:
         form = ClassCreationForm()
     
-    rawdata = EventType.objects.all()
-    messages.success(request, "")
-    return render(request, 'signupClass.html', {'form': form}, rawdata)
+
+    #messages.success(request, "")
+    return render(request, 'signupClass.html', {'classes':classes , 'form': form})
 
 
 
