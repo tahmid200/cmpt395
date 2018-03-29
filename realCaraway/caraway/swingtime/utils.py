@@ -15,7 +15,7 @@ from .conf import swingtime_settings
 from .models import EventType, Occurrence
 
 
-
+start_time=time(9)
 def time_delta_total_seconds(time_delta):
     '''
     Calculate the total number of seconds represented by a 
@@ -77,7 +77,7 @@ class BaseOccurrenceProxy(object):
 
 class DefaultOccurrenceProxy(BaseOccurrenceProxy):
 
-    CONTINUATION_STRING = '^^'
+    CONTINUATION_STRING = "------------"
     
     def __init__(self, *args, **kws):
         super(DefaultOccurrenceProxy, self).__init__(*args, **kws)
@@ -88,7 +88,7 @@ class DefaultOccurrenceProxy(BaseOccurrenceProxy):
         
         self._str = itertools.chain(
             (link,),
-            itertools.repeat(self.CONTINUATION_STRING)
+            itertools.repeat(self.title)
         )
 
     def __str__(self):
@@ -99,7 +99,7 @@ class DefaultOccurrenceProxy(BaseOccurrenceProxy):
 def create_timeslot_table(
     dt=None,
     items=None,
-    start_time=swingtime_settings.TIMESLOT_START_TIME,
+    start_time=time(9),#swingtime_settings.TIMESLOT_START_TIME,
     end_time_delta=swingtime_settings.TIMESLOT_END_TIME_DURATION,
     time_delta=swingtime_settings.TIMESLOT_INTERVAL,
     min_columns=swingtime_settings.TIMESLOT_MIN_COLUMNS,
@@ -131,7 +131,7 @@ def create_timeslot_table(
     
     '''
     dt = dt or datetime.now()
-    start_time = start_time.replace(tzinfo=dt.tzinfo) if not start_time.tzinfo else start_time
+    start_time = start_time #start_time.replace(tzinfo=dt.tzinfo) if not start_time.tzinfo else start_time
     dtstart = datetime.combine(dt.date(), start_time)
     dtend = dtstart + end_time_delta
     

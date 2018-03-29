@@ -13,6 +13,9 @@ from . import utils, forms
 from .conf import swingtime_settings
 
 
+
+
+
 if swingtime_settings.CALENDAR_FIRST_WEEKDAY is not None:
     calendar.setfirstweekday(swingtime_settings.CALENDAR_FIRST_WEEKDAY)
 
@@ -40,6 +43,9 @@ def event_listing(
     
     extra_context['events'] = events
     return render(request, template, extra_context)
+
+
+
 
 
 def event_view(

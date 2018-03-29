@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
+
 # creates a custom user model
 class CustomUserManager(UserManager):
     pass
@@ -20,4 +21,5 @@ class ParentCreation(models.Model):
     curent_hours = models.IntegerField(default=0)
     monthly_hours = models.IntegerField(default=0)
     total_hours = models.IntegerField(default=0)
+    objects = models.Manager()
 #-----------------------------------------------------------------------------

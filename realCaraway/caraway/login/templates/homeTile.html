@@ -1,0 +1,52 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="{% static 'login/tile.css' %}">
+
+  </head>
+
+  <div class="tiles-grid tiles-group size-4" data-group-title="General">
+    <a href="{% url 'signup' %}" data-role="tile" data-size="wide" style="background-color: #4a00b3">
+      <img src="{% static 'images/registerIcon.jpg' %}" class="icon">
+      <span class="branding-bar">User Registration</span>
+    </a>
+
+    <a href="{% url 'karate-home' %}" data-role="tile" data-size="wide" style="background-color: #FF4500">
+      <img src="{% static 'images/scheduleIcon.jpg' %}" class="icon">
+      <span class="branding-bar">Schedule</span>
+    </a>
+
+    <a href="{% url 'admin:index' %}" data-role="tile" data-size="large" style="background-color: #FFD700">
+      <img src="{% static 'images/adminIcon.jpg' %}" class="icon">
+      <span class="branding-bar">Admin Menu</span>
+    </a>
+
+    <a href="{% url 'logout' %}" data-role="tile" data-size="wide" style="background-color: #008000">
+      <img src="{% static 'images/logoutImage.png' %}" class="icon">
+      <span class="branding-bar">logout</span>
+    </a>
+
+    <div data-role="tile" data-effect="animate-slide-up" style="background-color: #ff0000">
+      <div class="slide"><img src="{% static 'images/hoursIcon.jpg' %}" class="icon"><h1 class="pos-absolute pos-center"></h1>
+        <span class="branding-bar">hours</span></div>
+      <div class="slide"><h1 class="pos-absolute pos-center">2</h1><span class="branding-bar">hours</span></div></div>
+
+  </div>
+
+  <div data-role="panel" data-width="400" data-cls-content="bg-dark fg-white">
+    <h1>Welcome to the Carraway Scheduling System:</h1>
+
+    <p>Maintenance - April 1st between 7:00 a.m. and 8:00 a.m. Services will be unavailable.</p>
+    <p>Thank you for your patience.</p>
+    <p>Group Black</p>
+  </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+  </body>
+</html>

@@ -1,19 +1,26 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
+
 {{ form.text|attr:"rows:1"|attr:"cols:85" }}
 <!doctype html>
 
 <head>
     <!--bootstrap.css-->
-   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-   <link rel="stylesheet" href="{% static 'login/registration.css' %}">
-   <meta charset='utf-8'>
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+    <link rel="stylesheet" href="{% static 'login/tile.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<h1>Class Signup</h1>
+<h1>class Signup<a href="{% url 'tile menu' %}"><img type = "image"
+                                                src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}"
+                                                alt="HTML tutorial" style="width:42px;height:42px;border:0;"
+                                                align = "right"> </a></h1>
+
 <!--Creating the drop down table for setting priority-->
 <p>
 
@@ -30,12 +37,57 @@
             </ul>
     </div>
 </p>
+{{ length }}
+<div class="container">
+    <h3> Current Sections: </h3>
+    <br>
+  {% for message in classes %}
+  <li>
+      {{ message }}
+  </li>
+
+  {% endfor %}
+    </div>
+
+
+
+
+<div class="container">
+           <div class="row">
+                <div class="col-xs-12">
+
+
+            </div>
+        </div>
+    </div>
+<div class="container">
 <form role = "form" action = "" method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <a href="{% url 'home' %}">
-        <img type = "image" src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}" alt="HTML tutorial" style="width:42px;height:42px;border:0;">
-    </a>
 
-    <button type="submit">Sign up</button>
+    <button type="submit" onclick="location.href=location.href">Sign up</button>
+
 </form>
+
+    </div>
+<br>
+<br>
+
+<div class="container">
+    <ul>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul>
+
+</div>
+

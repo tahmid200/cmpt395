@@ -51,6 +51,7 @@ class EventType(models.Model):
     '''
     abbr = models.CharField(_('abbreviation'), max_length=4, unique=False)
     label = models.CharField(_('label'), max_length=50)
+    objects = models.Manager()
 
     class Meta:
         verbose_name = _('event type')
@@ -59,6 +60,8 @@ class EventType(models.Model):
     def __str__(self):
         return self.label
 
+    def __iter__(self):
+        return self.label
 
 class Event(models.Model):
     '''

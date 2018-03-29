@@ -1,30 +1,54 @@
+import time
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.csrf import CsrfViewMiddleware
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib import messages
-from django.contrib.auth import login,authenticate
-
+from django.contrib.auth import login, authenticate, get_user_model
+from django.views.generic import ListView
 from .models import ParentCreation
-from swingtime.models import EventType
-from swingtime.forms import EventForm
-from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User
-from karate.urls import urlpatterns
+from swingtime.models import *
+from swingtime.views import *
+from swingtime.forms import *
+from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User,ParentUserCreationForm
 
+
+
+#rawdata = EventType.objects.all()
 #parent
 #----------------------------------------------------------------------------------------
 def SignUp(request):
+
     if request.method == 'POST':
-        form = ParentCreationForm(request.POST)
-        if form.is_valid():
+        form = ParentUserCreationForm(request.POST)
+        parent = ParentCreationForm(request.POST)
+        if form.is_valid() and parent.is_valid():
             form.save()
+            username = request.POST.get('username','')
+            first_name = request.POST.get('first_name','')
+            email = request.POST.get('email','')
+            children1 = request.POST.get('children1','')
+            children2 = request.POST.get('children2','')
+            last_name = request.POST.get('last_name','')
+            #password2 = request.POST.get('password2','')
+
+            obj = ParentCreation(username = username,first_name = first_name,email=email,children1=children1,children2=children2,last_name=last_name)
+            messages.success(request, "Success!")
+            obj.save()
             return HttpResponseRedirect('/users/signup')
     else:
-        form = ParentCreationForm()
-        
+       
+        #keep----------------------------
+        form = ParentUserCreationForm()
+        parent = ParentCreationForm()
+        #--------------------------------
+
+    messages.success(request, "")
     return render(request, 'signup.html', {'form': form})
+
 
 #-------------------------------------------------------------------------------------------------
 #admin
@@ -33,8 +57,16 @@ class SignUpAdmin(generic.CreateView):
     success_url = reverse_lazy('admin')
     template_name = 'signupAdmin.html'
 
+
 #class-------------------------------------------------------------------------------------------
+
 def SignUpClass(request):
+
+    classinfo = EventType.objects.all()
+    length = len(classinfo)
+    classes = []
+    for i in range(length):
+        classes.append(classinfo[i])
     if request.method == 'POST':
         # create a form instance and populate it with data from the request:
         form = ClassCreationForm(request.POST)
@@ -45,13 +77,18 @@ def SignUpClass(request):
             classObj = EventType(label = classroom)
             classObj.save()
 
+            #messages.success(request, "Success!")
+
             return HttpResponseRedirect('/users/signup/class/')
 
     # if a GET (or any other method) we'll create a blank form
     else:
         form = ClassCreationForm()
+    
 
-    return render(request, 'signupClass.html', {'form': form})
+    #messages.success(request, "")
+    return render(request, 'signupClass.html', {'classes':classes , 'form': form})
+
 
 
 
@@ -62,4 +99,22 @@ def Home(request):
     else:
         return HttpResponseRedirect('/swingtime/karate/')
 
-#--------------------------------------------------------------------------------------------------------
+#-------------------------------------------------------------------------------------------------
+@login_required
+def HomeTile(request):
+    if request.user.is_superuser:
+        return render(request, 'homeTile.html')
+    elif request.user.is_staff:
+        return HttpResponseRedirect('/swingtime/karate/')
+    else:
+        return render(request, 'parentTile.html')
+#-------------------------------------------------------------------------------------------------
+@login_required
+def ParentTile(request):
+    if request.user.is_superuser:
+        return render(request, 'homeTile.html')
+    elif request.user.is_staff:
+        return HttpResponseRedirect('/swingtime/karate/')
+    else:
+        return render(request, 'parentTile.html')
+

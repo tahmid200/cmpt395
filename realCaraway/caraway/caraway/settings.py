@@ -30,7 +30,7 @@ SECRET_KEY = 'm88p&qna&0&wexvr#4vvj=zr!r7&o+p@m8w&kpg!#4dv16^@2u'
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 # Application definition
 
@@ -141,5 +141,5 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'login.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'tile menu'
 LOGOUT_REDIRECT_URL = 'login'

@@ -10,6 +10,7 @@ from dateutil import rrule
 from .conf import swingtime_settings
 from .models import *
 from . import utils
+from .utils import start_time
 
 WEEKDAY_SHORT = (
     (7, _('Sun')),
@@ -98,7 +99,7 @@ SECONDS_INTERVAL = utils.time_delta_total_seconds(swingtime_settings.DEFAULT_OCC
 
 def timeslot_options(
     interval=swingtime_settings.TIMESLOT_INTERVAL,
-    start_time=swingtime_settings.TIMESLOT_START_TIME,
+    start_time=start_time, #swingtime_settings.TIMESLOT_START_TIME,
     end_delta=swingtime_settings.TIMESLOT_END_TIME_DURATION,
     fmt=swingtime_settings.TIMESLOT_TIME_FORMAT
 ):
@@ -122,7 +123,7 @@ def timeslot_options(
 
 def timeslot_offset_options(
     interval=swingtime_settings.TIMESLOT_INTERVAL,
-    start_time=swingtime_settings.TIMESLOT_START_TIME,
+    start_time=start_time, #swingtime_settings.TIMESLOT_START_TIME,
     end_delta=swingtime_settings.TIMESLOT_END_TIME_DURATION,
     fmt=swingtime_settings.TIMESLOT_TIME_FORMAT
 ):
