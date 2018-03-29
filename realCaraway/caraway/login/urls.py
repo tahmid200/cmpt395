@@ -7,6 +7,8 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('signup/',views.SignUp, name='signup'),
     path('home/', views.Home, name='home'),
+    path('hometile/', views.HomeTile, name='tile menu'),
+    path('parenttile/', views.ParentTile, name = 'parent menu'),
     path('signup/admin/',views.SignUpAdmin.as_view(),name = 'admin'),
     url(r'^builtinadminredirect$', RedirectView.as_view(url='/admin'), name = 'adminsettings'),
     #path('signup/class/',views.SignUpClass.as_view(),name = 'class'),

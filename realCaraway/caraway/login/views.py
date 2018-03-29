@@ -100,4 +100,21 @@ def Home(request):
         return HttpResponseRedirect('/swingtime/karate/')
 
 #-------------------------------------------------------------------------------------------------
+@login_required
+def HomeTile(request):
+    if request.user.is_superuser:
+        return render(request, 'homeTile.html')
+    elif request.user.is_staff:
+        return HttpResponseRedirect('/swingtime/karate/')
+    else:
+        return render(request, 'parentTile.html')
+#-------------------------------------------------------------------------------------------------
+@login_required
+def ParentTile(request):
+    if request.user.is_superuser:
+        return render(request, 'homeTile.html')
+    elif request.user.is_staff:
+        return HttpResponseRedirect('/swingtime/karate/')
+    else:
+        return render(request, 'parentTile.html')
 

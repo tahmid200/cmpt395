@@ -141,5 +141,5 @@ STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'login.CustomUser'
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'tile menu'
 LOGOUT_REDIRECT_URL = 'login'
