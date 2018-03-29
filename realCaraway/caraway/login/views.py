@@ -13,7 +13,7 @@ from swingtime.models import *
 from swingtime.views import *
 from swingtime.forms import *
 from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User
-from karate.urls import urlpatterns
+
 
 
 #rawdata = EventType.objects.all()
