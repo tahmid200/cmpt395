@@ -13,13 +13,31 @@ from swingtime.forms import *
 User = get_user_model()
 
 #Parent
+class ParentCreationForm(forms.Form):
+    username = forms.CharField(max_length=30)
+    first_name = forms.CharField(max_length=30)
+    last_name = forms.CharField(max_length=30)
+    email = forms.EmailField(max_length=30)
+    children1 = forms.CharField(max_length=30)
+    children2 = forms.CharField(max_length=30)
+
+    def clean(self):
+        cleaned_data = super(ParentCreationForm,self).clean()
+        username = cleaned_data.get('name')
+        first_name = cleaned_data.get('first_name')
+        last_name = cleaned_data.get('last_name')
+        email = cleaned_data.get('email')
+        children1 = cleaned_data.get('children1')
+        children2 = cleaned_data.get('children2')
+       
 #-----------------------------------------------------------------------------------------
-class ParentCreationForm(UserCreationForm):
+class ParentUserCreationForm(UserCreationForm):
     children1 = forms.CharField(label = 'children1')
     children2 = forms.CharField(label = 'children2') 
     email = forms.EmailField(required = True) 
 
-    class Meta(UserCreationForm):  
+    class Meta(UserCreationForm):
+    #class Meta:  
         model = User
         fields = (
             'username',
@@ -32,11 +50,10 @@ class ParentCreationForm(UserCreationForm):
             'children2'  
         )
     def save(self, commit=True):
-        user = super(ParentCreationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
+        user = super(ParentUserCreationForm,self).save(commit=False)
         user.children1 = self.cleaned_data['children1']
         user.children2 = self.cleaned_data['children2']
-
+        user.email = self.cleaned_data['email']
 
         if commit:
             user.save()

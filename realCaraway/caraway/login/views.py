@@ -1,6 +1,7 @@
 import time
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
+from django.views.decorators.csrf import CsrfViewMiddleware
 from django.urls import reverse_lazy
 from django.views import generic
 from django.shortcuts import render, redirect
@@ -12,7 +13,7 @@ from .models import ParentCreation
 from swingtime.models import *
 from swingtime.views import *
 from swingtime.forms import *
-from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User
+from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, User,ParentUserCreationForm
 
 
 
@@ -21,17 +22,29 @@ from .forms import AdminCreationForm, ClassCreationForm, ParentCreationForm, Use
 #----------------------------------------------------------------------------------------
 def SignUp(request):
 
-
     if request.method == 'POST':
-        form = ParentCreationForm(request.POST)
-        if form.is_valid():
+        form = ParentUserCreationForm(request.POST)
+        parent = ParentCreationForm(request.POST)
+        if form.is_valid() and parent.is_valid():
             form.save()
-            messages.success(request, "Success!")
+            username = request.POST.get('username','')
+            first_name = request.POST.get('first_name','')
+            email = request.POST.get('email','')
+            children1 = request.POST.get('children1','')
+            children2 = request.POST.get('children2','')
+            last_name = request.POST.get('last_name','')
+            #password2 = request.POST.get('password2','')
 
+            obj = ParentCreation(username = username,first_name = first_name,email=email,children1=children1,children2=children2,last_name=last_name)
+            messages.success(request, "Success!")
+            obj.save()
             return HttpResponseRedirect('/users/signup')
     else:
-        form = ParentCreationForm()
-
+       
+        #keep----------------------------
+        form = ParentUserCreationForm()
+        parent = ParentCreationForm()
+        #--------------------------------
 
     messages.success(request, "")
     return render(request, 'signup.html', {'form': form})
