@@ -21,11 +21,11 @@
     <h3>Username: {{ request.user.username }}</h3>
     <h3>Contact Email: {{ request.user.email }}</h3>
     {% for video in User %}
-    {{ video }}
+    {% if video.username == request.user.username %}
         <h3>Total Hours: {{ video.total_hours }}</h3>
         <h3>Current Hours: {{ video.curent_hours }}</h3>
         <h3>Children: {{ video.children1 }} , {{ video.children2 }}</h3>
-
+    {% endif %}
     {% endfor %}
     <h3>First Name: {{request.user.first_name}}</h3>
     <h3>Last Name: {{ request.user.last_name }}</h3>
