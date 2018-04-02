@@ -239,7 +239,7 @@ class MultipleOccurrenceForm(forms.Form):
         initial=rrule.WEEKLY,
         widget=forms.RadioSelect(choices=FREQUENCY_CHOICES),
     )
-
+    slots = 3
     interval = forms.IntegerField(
         required=False,
         initial='1',
@@ -381,6 +381,7 @@ class EventForm(forms.ModelForm):
     def __init__(self, *args, **kws):
         super(EventForm, self).__init__(*args, **kws)
         self.fields['description'].required = False
+        self.fields['slots'].required = False
 
 
 class SingleOccurrenceForm(forms.ModelForm):
