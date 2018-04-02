@@ -89,7 +89,7 @@ class Event(models.Model):
         verbose_name=_('event type'),
         on_delete=models.CASCADE
     )
-    #slots = models.IntegerField(default=3)
+    slots = models.IntegerField(default=3)
     notes = GenericRelation(Note, verbose_name=_('notes'))
 
     class Meta:

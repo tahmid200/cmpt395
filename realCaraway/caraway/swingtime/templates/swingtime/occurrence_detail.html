@@ -47,7 +47,7 @@
      </form>
 {% else %}
     {% for x in Volunteer %}
-        {{ x }}
+        <h4> Current Timeslots available: {{ x.slots }} </h4>
 
     {% endfor %}
     <button type="submit" onclick="">Sign Up</button>

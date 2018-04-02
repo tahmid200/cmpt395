@@ -2,9 +2,10 @@
 {% block title %}Add Event{% endblock %}
 {% block main_content %}
     <h3>Add Event</h3>
-    {% for lel in LOL %}
-        <h2>Current Timeslot: {{lel.slots}}</h2>
-    {% endfor %}
+
+    <h2>3 Slots Available per Class Section</h2>
+    {{ event_form.errors }}
+    {{ recurrence_form.errors }}
     
     {{ event_form.non_field_errors }}
     {{ recurring_form.non_field_errors }}

@@ -127,8 +127,8 @@ def occurrence_view(
             return http.HttpResponseRedirect(request.path)
     else:
         form = form_class(instance=occurrence)
-    #Volunteer = TimeSlot.objects.all()
-    return render(request, template, {'occurrence': occurrence, 'form': form})
+    Volunteer = Event.objects.all()
+    return render(request, template, {'occurrence': occurrence, 'form': form, 'Volunteer':Volunteer})
 
 
 def add_event(
