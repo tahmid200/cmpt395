@@ -64,7 +64,7 @@ class EventType(models.Model):
     '''
     abbr = models.CharField(_('abbreviation'), max_length=4, unique=False)
     label = models.CharField(_('label'), max_length=50)
-    slots = models.IntegerField(default=3)
+    #slots = models.IntegerField(default=3)
     objects = models.Manager()
 
     class Meta:
@@ -82,12 +82,14 @@ class Event(models.Model):
     Container model for general metadata and associated ``Occurrence`` entries.
     '''
     title = models.CharField(_('title'), max_length=32)
+    #slots = models.CharField(max_length=2)
     description = models.CharField(_('description'), max_length=100)
     event_type = models.ForeignKey(
         EventType,
         verbose_name=_('event type'),
         on_delete=models.CASCADE
     )
+    #slots = models.IntegerField(default=3)
     notes = GenericRelation(Note, verbose_name=_('notes'))
 
     class Meta:

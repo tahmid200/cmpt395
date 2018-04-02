@@ -173,11 +173,11 @@ def add_event(
         dtstart = dtstart or datetime.now()
         event_form = event_form_class()
         recurrence_form = recurrence_form_class(initial={'dtstart': dtstart})
-            
+    LOL = Event.objects.all()        
     return render(
         request,
         template,
-        {'dtstart': dtstart, 'event_form': event_form, 'recurrence_form': recurrence_form}
+        {'dtstart': dtstart, 'event_form': event_form, 'recurrence_form': recurrence_form, 'LOL':LOL}
     )
 
 

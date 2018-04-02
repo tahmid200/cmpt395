@@ -8,7 +8,7 @@ from django.forms.widgets import SelectDateWidget
 
 from dateutil import rrule
 from .conf import swingtime_settings
-from .models import *
+from swingtime.models import *
 from . import utils
 from .utils import start_time
 
@@ -209,7 +209,10 @@ class MultipleOccurrenceForm(forms.Form):
         label=_('End time'),
         widget=forms.Select(choices=default_timeslot_offset_options)
     )
-
+    # slots = forms.IntegerField(
+    #     label=_('Slots'),
+    #     widget=forms.Select(choices=default_timeslot_offset_options)
+    # )
     # recurrence options
     repeats = forms.ChoiceField(
         choices=REPEAT_CHOICES,
