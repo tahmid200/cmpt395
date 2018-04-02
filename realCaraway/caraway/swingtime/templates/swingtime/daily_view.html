@@ -22,7 +22,14 @@
         <tbody>
             {% for tm,cells in timeslots %}
             <tr>
-                <th class="center"><a href="{% url 'swingtime-add-event' %}?dtstart={{ tm.isoformat }}">{{ tm|date:"h:i a" }}</a></th>
+                {% if request.user.is_superuser %}
+                    <th class="center"><a href="{% url 'swingtime-add-event' %}?dtstart={{ tm.isoformat }}">{{ tm|date:"h:i a" }}</a></th>
+
+                {% else %}
+                    <th class="center"><a href="{% url 'home' %}?dtstart={{ tm.isoformat }}">{{ tm|date:"h:i a" }}</a></th>
+                
+                {% endif %}
+
                 {% for cell in cells %}
                 <td{% if cell.event_class %} class="{{cell.event_class}}"{% endif %}>{{ cell }}</td>    
                 {% endfor %}
