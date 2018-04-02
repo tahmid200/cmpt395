@@ -26,8 +26,8 @@
                     <th class="center"><a href="{% url 'swingtime-add-event' %}?dtstart={{ tm.isoformat }}">{{ tm|date:"h:i a" }}</a></th>
 
                 {% else %}
-                    <th class="center"><a href="{% url 'home' %}?dtstart={{ tm.isoformat }}">{{ tm|date:"h:i a" }}</a></th>
-                
+                    <th class="center">{{ tm|date:"h:i a" }}</th>
+
                 {% endif %}
 
                 {% for cell in cells %}

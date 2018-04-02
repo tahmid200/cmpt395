@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser, UserManager
 from django.db import models
 
@@ -23,3 +24,4 @@ class ParentCreation(models.Model):
     total_hours = models.IntegerField(default=0)
     objects = models.Manager()
 #-----------------------------------------------------------------------------
+

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'karate',
     'login',
     'widget_tweaks',
+
 ]
 
 MIDDLEWARE = [

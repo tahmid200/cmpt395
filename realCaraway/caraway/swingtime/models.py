@@ -1,5 +1,6 @@
 from datetime import datetime, date, timedelta
 from dateutil import rrule
+from django.contrib.auth import get_user_model
 
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
@@ -9,6 +10,7 @@ from django.conf import settings
 from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelation
 
 from .conf import swingtime_settings
+User = get_user_model()
 
 __all__ = (
     'Note',
@@ -20,6 +22,17 @@ __all__ = (
 
 #class ClassCreation(models.Model):
  #   classroom = models.CharField(max_length=255)
+
+#class TimeSlot(models.Model):
+    #owner = models.#ForeignKey(User, on_delete=models.DO_NOTHING)
+ #   hours = models.IntegerField(default=5)
+  #  slots_available = models.IntegerField(default=3)
+   # objects = models.Manager()
+
+#class Selection(models.Model):
+ #   owner = models.ForeignKey(User, on_delete=models.DO_NOTHING)  # other users
+
+
 
 
 class Note(models.Model):
@@ -51,6 +64,7 @@ class EventType(models.Model):
     '''
     abbr = models.CharField(_('abbreviation'), max_length=4, unique=False)
     label = models.CharField(_('label'), max_length=50)
+    slots = models.IntegerField(default=3)
     objects = models.Manager()
 
     class Meta:

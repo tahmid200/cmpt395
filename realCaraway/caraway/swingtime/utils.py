@@ -12,7 +12,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 from dateutil import rrule
 from .conf import swingtime_settings
-from .models import EventType, Occurrence
+from swingtime.models import EventType, Occurrence
 
 
 start_time=time(9)

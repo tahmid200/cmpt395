@@ -4,6 +4,7 @@ import logging
 from datetime import datetime, timedelta, time
 from dateutil import parser
 from django import http
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.context import RequestContext
 from django.shortcuts import get_object_or_404, render
@@ -11,7 +12,7 @@ from django.shortcuts import get_object_or_404, render
 from .models import Event, Occurrence
 from . import utils, forms
 from .conf import swingtime_settings
-
+User = get_user_model()
 
 
 
@@ -113,14 +114,20 @@ def occurrence_view(
         a form object for updating the occurrence
     '''
     occurrence = get_object_or_404(Occurrence, pk=pk, event__pk=event_pk)
+
     if request.method == 'POST':
+        #Schedule = TimeSlot(request.POST)
+        #if Schedule.is_valid():
+            #Schedule = request.POST.get('event_type', '')
+            #ScheduleObj = TimeSlot(slots_available=Schedule)
+            #Schedule.save()
         form = form_class(request.POST, instance=occurrence)
         if form.is_valid():
             form.save()
             return http.HttpResponseRedirect(request.path)
     else:
         form = form_class(instance=occurrence)
-        
+    #Volunteer = TimeSlot.objects.all()
     return render(request, template, {'occurrence': occurrence, 'form': form})
 
 
@@ -327,4 +334,5 @@ def month_view(
     }
 
     return render(request, template, data)
+
 
