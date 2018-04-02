@@ -7,7 +7,7 @@ class CustomUserManager(UserManager):
     pass
 
 class CustomUser(AbstractUser):
-    objects = CustomUserManager()
+    objects = UserManager()
 
 #--------------------------------------------------------------------------
 class ParentCreation(models.Model):
