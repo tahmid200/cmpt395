@@ -47,12 +47,16 @@
      </form>
 {% else %}
     {% for x in Volunteer %}
-        <h4> Current Timeslots available: {{ x.slots }} </h4>
-        <button type="submit" onclick="">Slot 1</button>
+        {% if x.title == occurence.title%}
+            <h4> Current Timeslots available: {{ x.slots }} </h4>
+            <button type="submit" onclick="">Slot 1</button>
 
-        <button type="submit" onclick="">Slot 2</button>
-        <button type="submit" onclick="">Slot 3</button>
+            <button type="submit" onclick="">Slot 2</button>
+            <button type="submit" onclick="">Slot 3</button>
+        {% endif %}
     {% endfor %}
+    <br>
+    <br>
     <button type="submit" onclick="">Sign up</button>
 
 {% endif %}
