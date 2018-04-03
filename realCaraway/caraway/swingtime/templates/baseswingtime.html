@@ -136,7 +136,11 @@
 
 
     <header role="banner">
-        <h1><a href="{% url 'home' %}">Caraway Schedule System</a></h1>
+        {% if user.request.is_superuser %}
+            <h1><a href="{% url 'tile menu' %}">Caraway Schedule System</a></h1>
+        {% else %}
+            <h1><a href="{% url 'parent menu' %}">Caraway Schedule System</a></h1>
+        {% endif %}
 
     </header>
     <main role="main">
