@@ -128,7 +128,10 @@ def occurrence_view(
     else:
         form = form_class(instance=occurrence)
     Volunteer = Event.objects.all()
-    return render(request, template, {'occurrence': occurrence, 'form': form, 'Volunteer':Volunteer})
+    #Start = occurrence.start_time.time().hour
+    start = occurrence.start_time
+    end = occurrence.end_time
+    return render(request, template, {'occurrence': occurrence, 'form': form, 'Volunteer':Volunteer,'start':start,'end':end})
 
 
 def add_event(
