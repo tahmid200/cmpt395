@@ -22,14 +22,14 @@
       <span class="branding-bar">logout</span>
     </a>
 
-      <div data-role="tile" data-size="large" data-effect="animate-slide-up" style="background-color: #ff0000">
-          <div class="slide"><img src="{% static 'images/hoursIcon.jpg' %}" class="icon"><h1 class="pos-absolute pos-center"></h1>
+      <a data-role="tile" href = "{%url 'swingtime-today' %}" data-size="large" data-effect="animate-slide-up" style="background-color: #ff0000">
+          <div class="slide" ><img src="{% static 'images/hoursIcon.jpg' %}" class="icon"><h1 class="pos-absolute pos-center"></h1>
               <span class="branding-bar">hours</span></div>
 
           <div class="slide"><h1 class="pos-absolute pos-center">Total Hours: {{ total }}</h1></div>
               <div class="slide"><h1 class="pos-absolute pos-center">Current Hours: {{hours}} </h1></div>
               <span class="branding-bar">hours</span>
-          </div></div>
+          </a></div>
 
   </div>
 

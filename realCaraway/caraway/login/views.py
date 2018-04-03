@@ -127,10 +127,15 @@ def HomeTile(request):
 @login_required
 def ParentTile(request):
     User = ParentCreation.objects.all()
+    length = len(User)
+    for i in range(length):
+        if request.user.username == User[i].username:
+            hours = User[i].curent_hours
+            total = User[i].total_hours
     if request.user.is_superuser:
         return render(request, 'homeTile.html')
     elif request.user.is_staff:
-        return HttpResponseRedirect('swingtime-daily-view')
+        return HttpResponseRedirect('/swingtime/karate/')
     else:
-        return render(request, 'parentTile.html', {'User': User})
+        return render(request, 'parentTile.html', {'hours': hours, 'total': total})
 
