@@ -87,13 +87,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caraway/login/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="495">
               <caret line="139" column="83" lean-forward="true" selection-start-line="139" selection-start-column="83" selection-end-line="139" selection-end-column="83" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/caraway/caraway/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="464">
+              <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+              <folding>
+                <element signature="e#355#364#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -119,7 +131,6 @@
       <list>
         <option value="$PROJECT_DIR$/caraway/swingtime/templates/swingtime/daily_view.html" />
         <option value="$PROJECT_DIR$/caraway/login/templates/registration/homeTile.html" />
-        <option value="$PROJECT_DIR$/caraway/caraway/settings.py" />
         <option value="$PROJECT_DIR$/caraway/login/static/login/tile.css" />
         <option value="$PROJECT_DIR$/caraway/login/templates/signupClass.html" />
         <option value="$PROJECT_DIR$/caraway/login/templates/signupAdmin.html" />
@@ -132,6 +143,7 @@
         <option value="$PROJECT_DIR$/caraway/swingtime/templates/karate.html" />
         <option value="$PROJECT_DIR$/caraway/login/templates/parentTile.html" />
         <option value="$PROJECT_DIR$/caraway/login/views.py" />
+        <option value="$PROJECT_DIR$/caraway/caraway/settings.py" />
       </list>
     </option>
   </component>
@@ -530,13 +542,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/caraway/caraway/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="143" column="31" lean-forward="false" selection-start-line="143" selection-start-column="31" selection-end-line="143" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/caraway/login/templates/signupClass.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -739,6 +744,16 @@
           <caret line="139" column="83" lean-forward="true" selection-start-line="139" selection-start-column="83" selection-end-line="139" selection-end-column="83" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caraway/caraway/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="464">
+          <caret line="30" column="29" lean-forward="false" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding>
+            <element signature="e#355#364#0" expanded="true" />
           </folding>
         </state>
       </provider>

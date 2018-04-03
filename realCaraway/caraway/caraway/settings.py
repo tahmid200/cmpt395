@@ -14,7 +14,7 @@ import os
 import dateutil
 import sys
 import datetime
-
+from django.contrib import admin
 #User = get_user_model()
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -28,7 +28,7 @@ SECRET_KEY = 'm88p&qna&0&wexvr#4vvj=zr!r7&o+p@m8w&kpg!#4dv16^@2u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+admin.site.site_url = '/login'
 ALLOWED_HOSTS = ['*']
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
