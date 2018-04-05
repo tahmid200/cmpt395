@@ -90,6 +90,9 @@ class Event(models.Model):
         on_delete=models.CASCADE
     )
     slots = models.IntegerField(default=3)
+    slot1 = models.CharField(max_length=20, default='Slot 1')
+    slot2 = models.CharField(max_length=20, default='Slot 2')
+    slot3 = models.CharField(max_length=20, default='Slot 3')
     notes = GenericRelation(Note, verbose_name=_('notes'))
 
     class Meta:

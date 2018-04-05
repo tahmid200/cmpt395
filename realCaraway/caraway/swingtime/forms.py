@@ -382,6 +382,9 @@ class EventForm(forms.ModelForm):
         super(EventForm, self).__init__(*args, **kws)
         self.fields['description'].required = False
         self.fields['slots'].required = False
+        self.fields['slot1'].required = False
+        self.fields['slot2'].required = False
+        self.fields['slot3'].required = False
 
 
 class SingleOccurrenceForm(forms.ModelForm):
