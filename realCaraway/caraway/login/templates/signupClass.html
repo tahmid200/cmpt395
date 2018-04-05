@@ -1,93 +1,83 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
-
-
 {{ form.text|attr:"rows:1"|attr:"cols:85" }}
 <!doctype html>
 
-<head>
-    <!--bootstrap.css-->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <meta charset='utf-8'>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
-    <link rel="stylesheet" href="{% static 'login/tile.css' %}">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<h1>class Signup<a href="{% url 'tile menu' %}"><img type = "image"
-                                                src="{% static 'images/home-icon-silhouette_318-85097.jpg' %}"
-                                                alt="HTML tutorial" style="width:42px;height:42px;border:0;"
-                                                align = "right"> </a></h1>
+<html lang="en">
+    <head>
+        <!--bootstrap.css-->
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+        <link rel="stylesheet" href="{% static 'login/tile.css' %}">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
 
-<!--Creating the drop down table for setting priority-->
-<p>
+    <body>
+        <ul class="h-menu">
+            {% if user.request.is_superuser %}
+                <li><a href="{% url 'tile menu' %}">Main Menu</a></li>
+            {% else %}
+                <li><a href="{% url 'parent menu' %}">Main Menu</a></li>
+            {% endif %}
+            <li><a href="{% url 'karate-home' %}">Scheduling Home</a></li>
+            <li><a href="{% url 'swingtime-today' %}">Daily View</a></li>
+            <li><a href="{% url 'swingtime-monthly-view' current_datetime.year current_datetime.month %}">Monthly View</a></li>
+            <li><a href="{% url 'swingtime-yearly-view' current_datetime.year %}">Yearly View</a></li>
+            <li><a href="{% url 'swingtime-events' %}">Event Listing</a></li>
+            <li>
+                <a class="dropdown-toggle">Signup</a>
+                <ul class="d-menu" data-role="dropdown">
+                    <li><a href="{% url 'signup' %}">Parent Signup</a></li>
+                    <li class="divider"></li>
+                    <li><a href="{% url 'admin' %}">Admin Signup</a></li>
+                    <li class="divider"></li>
+                    <li><a href = "{% url 'class' %}"> Class Sign Up</a></li>
+                </ul>
+            </li>
+        </ul>
 
+        <h1>class Signup</h1>
 
-        <div class="dropdown">
-            <label for = "User Type">User Types </label>
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownPriority" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Class<span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                <li><a href="../">Parent</a></li>
-                <li><a href="../admin">Admin</a></li>
-                <li><a href="./">Class</a></li>
-            </ul>
-    </div>
-</p>
-{{ length }}
-<div class="container">
-    <h3> Current Sections: </h3>
-    <br>
-  {% for message in classes %}
-  <li>
-      {{ message }}
-  </li>
+        {{ length }}
 
-  {% endfor %}
-    </div>
+        <div class="container">
+            <h3> Current Sections: </h3>
+            <br>
+            {% for message in classes %}
+            <li>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </div>
 
-
-
-
-<div class="container">
-           <div class="row">
+        <div class="container">
+            <div class="row">
                 <div class="col-xs-12">
-
-
+                </div>
             </div>
         </div>
-    </div>
-<div class="container">
-<form role = "form" action = "" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
 
-    <button type="submit" onclick="location.href=location.href">Sign up</button>
+        <div class="container">
+            <form role = "form" action = "" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" onclick="location.href=location.href">Sign up</button>
+            </form>
+        </div>
+        <br>
+        <br>
 
-</form>
+        <div class="container">
+            <ul>
 
-    </div>
-<br>
-<br>
+            </ul>
+        </div>
 
-<div class="container">
-    <ul>
-
-
-
-
-
-
-
-
-
-
-
-
-</ul>
-
-</div>
-
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+    </body>
+</html>

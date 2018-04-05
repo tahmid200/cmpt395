@@ -1,52 +1,106 @@
 {% load staticfiles %}
 <!DOCTYPE html>
+
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
-    <link rel="stylesheet" href="{% static 'login/tile.css' %}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+        <link rel="stylesheet" href="{% static 'login/tile.css' %}">
+    </head>
 
-  </head>
+    <body>
+        <div class="tiles-grid tiles-group size-4" data-group-title="General">
+            <a href="{% url 'signup' %}" data-role="tile" data-effect="hover-zoom-down" style="background-color: #4B0082">
+                <div class = "slide-front">
+                    <img src="{% static 'images/registerIconParent.jpg' %}" class="icon">
+                </div>
+                <div class="slide-back d-flex flex-justify-center flex-align-center p-4 op-mauve">
+                    <p class = "text-center">
+                        Create users for parents
+                    </p>
+                </div>
+                <span class="branding-bar">Parent Registration</span>
+            </a>
 
-  <div class="tiles-grid tiles-group size-4" data-group-title="General">
-    <a href="{% url 'signup' %}" data-role="tile" data-size="wide" style="background-color: #4a00b3">
-      <img src="{% static 'images/registerIcon.jpg' %}" class="icon">
-      <span class="branding-bar">User Registration</span>
-    </a>
+            <a href="{% url 'admin' %}" data-role="tile" data-effect="hover-zoom-down" style="background-color: #008000">
+                <div class = "slide-front">
+                    <img src="{% static 'images/registerIconAdmin.png' %}" class="icon">
+                </div>
+                <div class="slide-back d-flex flex-justify-center flex-align-center p-4 op-green">
+                    <p class = "text-center">
+                        Create Administrators for the system
+                    </p>
+                </div>
+                <span class="branding-bar">Admin Registration</span>
+            </a>
 
-    <a href="{% url 'karate-home' %}" data-role="tile" data-size="wide" style="background-color: #FF4500">
-      <img src="{% static 'images/parentIcon.png' %}" class="icon">
-      <span class="branding-bar">Parent View</span>
-    </a>
+            <a href="{% url 'class' %}" data-role="tile" data-effect="hover-zoom-down" style="background-color: #1E90FF">
+                <div class = "slide-front">
+                    <img src="{% static 'images/registerIconClass.png' %}" class="icon">
+                </div>
+                <div class="slide-back d-flex flex-justify-center flex-align-center p-4 op-cyan">
+                    <p class = "text-center">
+                        Create Classes and view a list of classrooms created
+                    </p>
+                </div>
+                <span class="branding-bar">Class Registration</span>
+            </a>
 
-    <a href="{% url 'admin:index' %}" data-role="tile" data-size="large" style="background-color: #FFD700">
-      <img src="{% static 'images/adminIcon.jpg' %}" class="icon">
-      <span class="branding-bar">Admin Menu</span>
-    </a>
+            <div data-role="tile" data-effect="animate-slide-up" style="background-color: #ff0000">
+                <div class="slide">
+                    <img src="{% static 'images/hoursIcon.jpg' %}" class="icon">
+                    <h1 class="pos-absolute pos-center"></h1>
+                </div>
+                <div class="slide">
+                    <h1 class="pos-absolute pos-center">2</h1>
+                </div>
+                <span class="branding-bar">Hours</span>
+            </div>
 
-    <a href="{% url 'logout' %}" data-role="tile" data-size="wide" style="background-color: #008000">
-      <img src="{% static 'images/logoutImage.png' %}" class="icon">
-      <span class="branding-bar">logout</span>
-    </a>
+            <a href="{% url 'karate-home' %}" data-role="tile" data-effect="hover-zoom-down" data-size="wide" style="background-color: #FF4500">
+                <div class = "slide-front">
+                    <img src="{% static 'images/scheduleIcon.jpg' %}" class="icon">
+                </div>
+                <div class="slide-back d-flex flex-justify-center flex-align-center p-4 op-amber">
+                    <p class = "text-center">
+                        For the Scheduling system look at yearly, monthly, daily view, and create events.
+                    </p>
+                </div>
+                <span class="branding-bar">Schedule</span>
+            </a>
 
-    <div data-role="tile" data-effect="animate-slide-up" style="background-color: #ff0000">
-      <div class="slide"><img src="{% static 'images/scheduleIcon.jpg' %}" class="icon"><h1 class="pos-absolute pos-center"></h1>
-        <span class="branding-bar">Schedule</span></div>
-      <div class="slide"><h1 class="pos-absolute pos-center">2</h1><span class="branding-bar">Schedule</span></div></div>
+            <a href="{% url 'admin:index' %}" data-role="tile" data-effect="hover-zoom-right" data-size="wide" style="background-color: #FFD700">
+                <div class="slide-front">
+                    <img src="{% static 'images/adminIcon.jpg' %}" class="icon">
+                </div>
+                <div class="slide-back d-flex flex-justify-center flex-align-center p-4 op-yellow">
+                    <p class = "text-center">
+                        Allows ability to add remove and update users, and classes
+                    </p>
+                </div>
+                <span class="branding-bar">Admin Menu</span>
+            </a>
 
-  </div>
+            <a href="{% url 'logout' %}" data-role="tile" data-effect="hover-zoom-left" data-size="wide" style="background-color: #FF00FF">
+                <div class="slide-front">
+                    <img src="{% static 'images/logoutImage.png' %}" class="icon">
+                </div>
+                <div class="slide-back d-flex flex-justify-center flex-align-center p-4 op-pink"></div>
+                <span class="branding-bar">logout</span>
+            </a>
+        </div>
 
-  <div data-role="panel" data-width="400" data-cls-content="bg-dark fg-white">
-    <h1>Welcome to the Carraway Scheduling System:</h1>
+        <div data-role="panel" data-width="400" data-cls-content="bg-dark fg-white">
+            <h1>Welcome to the Caraway Scheduling System:</h1>
 
-    <p>Maintenance - April 1st between 7:00 a.m. and 8:00 a.m. Services will be unavailable.</p>
-    <p>Thank you for your patience.</p>
-    <p>Group Black</p>
-  </div>
+            <p>Maintenance - April 1st between 7:00 a.m. and 8:00 a.m. Services will be unavailable.</p>
+            <p>Thank you for your patience.</p>
+            <p>Group Black</p>
+        </div>
 
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
-  </body>
+    </body>
 </html>

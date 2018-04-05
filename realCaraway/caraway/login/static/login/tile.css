@@ -7,3 +7,9 @@ body {
 dropdown {
  color: #000000;
 }
+
+a:hover {
+    color: white;
+    background-color: transparent;
+    text-decoration: none;
+}

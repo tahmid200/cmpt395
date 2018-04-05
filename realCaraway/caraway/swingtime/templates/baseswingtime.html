@@ -4,15 +4,19 @@
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAB7ElEQVRYR+1Wv8tBURh+rhBJkkXZZFFmi1Epm+IfUPwD7iSrweBfUHZKUsqiLBZWFlnZMAgR3/e9p+/czr333Ni+bzjvxH3fc57nfd4f92pfP4Y/NE0RUAooBZQC/04Bv9+P2+1m7Ea+KEulknRf9vt9VKtVHI9Hm7/X60HTNMjO0jky0yak4NPphFAohPP5jGAwiOfzCZfLxYLn8zkymQz7/Xq92OWi8f8ESOCiHQ4HRCIR9kjc/gaBcDjMwEVns9mErusgVbh5vV48Hg+Qr9FomEAWiwXS6bQNhAcRQeurxyDA2X/ybnKKTSQS2G63UgKXywWBQMCZQL1eR6vVcmQvk9qWjVCS8XiMfD5vHCPSpJzb7TaXTZwCsaYejwf3+13aeOVyGd1uF8lkEuv12iBNvUKkZArJ5Lc1IT2oVCrodDoGsFNJrCBihlZfu93GaDTCbDazJeT4PSCqISPB/XwaxAyz2Sym0ymKxSJo3JyylyrwSa0pZrVaIZVKsfBarYblcmnKUFThIwLSEfltqndlsM42y0xoSJqMeDwu7SfTGOZyOUwmE1PnRqNR7Pd7+WEBxEpyOByiUCi8nSqDQCwWw263MwHRBYPBQArOs6bO32w2oB1gNVLB5/Pher063qE+SpUCSgGlgFLgG9dtWrCVDPQJAAAAAElFTkSuQmCC"/>
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+
     <title>{% block title %}{% endblock %}</title>
+
     <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
     <style>
         * {margin: 0; padding: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit;}
         h1 { font-size: 2.33em; text-align: center; }
@@ -129,36 +133,36 @@
             .evt-prv-odd { background-color: #8a9; }
             .evt-prv-even { background-color: #acb; }
     </style>
-    {% block extended_head %}{% endblock %}
-</head>
-<body>
-<div class="container">
+        {% block extended_head %}{% endblock %}
+    </head>
 
+    <body>
+        <ul class="h-menu">
+            {% if user.request.is_superuser %}
+                <li><a href="{% url 'tile menu' %}">Main Menu</a></li>
+            {% else %}
+                <li><a href="{% url 'parent menu' %}">Main Menu</a></li>
+            {% endif %}
+            <li><a href="{% url 'karate-home' %}">Scheduling Home</a></li>
+            <li><a href="{% url 'swingtime-today' %}">Daily View</a></li>
+            <li><a href="{% url 'swingtime-monthly-view' current_datetime.year current_datetime.month %}">Monthly View</a></li>
+            <li><a href="{% url 'swingtime-yearly-view' current_datetime.year %}">Yearly View</a></li>
+            <li><a href="{% url 'swingtime-events' %}">Event Listing</a></li>
+        </ul>
 
-    <header role="banner">
-        {% if user.request.is_superuser %}
-            <h1><a href="{% url 'tile menu' %}">Caraway Schedule System</a></h1>
-        {% else %}
-            <h1><a href="{% url 'parent menu' %}">Caraway Schedule System</a></h1>
-        {% endif %}
+        <div class="container">
+            <header role="banner">
+                <h1>Caraway Schedule System</h1>
+            </header>
 
-    </header>
-    <main role="main">
-        {% block navigation %}
+            <main role="main">
+                <h2>Team Black Inc</h2>
+                {% block main_content %}{% endblock main_content %}
+            </main>
+            <footer role="contentinfo"></footer>
+        </div>
 
-        <h2>Team Black Inc</h2>
-        <nav>
-            <a href="{% url 'karate-home' %}">Home</a> &middot;
-            <a href="{% url 'swingtime-today' %}">Daily View</a> &middot; 
-            <a href="{% url 'swingtime-monthly-view' current_datetime.year current_datetime.month %}">
-                Monthly View</a> &middot; 
-            <a href="{% url 'swingtime-yearly-view' current_datetime.year %}">Yearly View</a> &middot; 
-            <a href="{% url 'swingtime-events' %}">Event Listing</a>
-        </nav>
-        {% endblock navigation %}
-        {% block main_content %}{% endblock main_content %}
-    </main>
-    <footer role="contentinfo"></footer>
-</div>
-</body>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+    </body>
 </html>
