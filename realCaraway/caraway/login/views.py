@@ -138,4 +138,5 @@ def ParentTile(request):
         return HttpResponseRedirect('/swingtime/karate/')
     else:
         return render(request, 'parentTile.html', {'hours': hours, 'total': total})
+#--------------------------------------------------------------------------------------------
 

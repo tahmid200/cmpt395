@@ -1,4 +1,6 @@
 from django.conf.urls import url
+from django.urls import path
+
 from swingtime import views
 
 urlpatterns = [
@@ -8,6 +10,7 @@ urlpatterns = [
         name='swingtime-today'
     ),
 
+    url(r'^like/(\w+)/(\d+)/(\d+)$', views.SlotAdd, name='slotadd'),
 
     url(
         r'^calendar/(?P<year>\d{4})/$', 

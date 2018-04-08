@@ -6,7 +6,7 @@
 
 
 
-{% if user.request.is_superuser %}
+{% if user.is_superuser %}
      <h3>Swingtime Event Occurrence</h3>
      <h4>
          <a href="{{ occurrence.event.get_absolute_url }}">{{ occurrence.title }}</a>
@@ -55,9 +55,7 @@
         {% if x.title == occurrence.title%}
             <div class="center">
             <h4>Timeslots: {{ x.slots }} </h4>
-            <button id="demo" type="submit" onclick="label={{user.username}}">{{x.slot1}}</button>
-            <button id="demo2" type="submit" onclick="myFunction2()">{{x.slot2}}</button>
-            <button id="demo3" type="submit" onclick="myFunction3()">{{x.slot3}}</button>
+            <p><a href="{% url 'slotadd' x.title occurrence.id x.id %}">Signup</a></p>
             </div>
             <h4>Start Time: {{ start }}</h4>
             <h4>End Time: {{ end }}</h4>

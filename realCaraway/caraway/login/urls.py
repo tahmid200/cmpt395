@@ -14,4 +14,5 @@ urlpatterns = [
     #path('signup/class/',views.SignUpClass.as_view(),name = 'class'),
     path('signup/class/',views.SignUpClass,name = 'class'),
 
+
 ]

@@ -2,6 +2,7 @@ from datetime import datetime, date, timedelta
 from dateutil import rrule
 from django.contrib.auth import get_user_model
 
+
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 from django.db import models

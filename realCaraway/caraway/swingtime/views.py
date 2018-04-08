@@ -6,8 +6,10 @@ from dateutil import parser
 from django import http
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
 from django.shortcuts import get_object_or_404, render
+from django.urls import path
 
 from .models import Event, Occurrence
 from . import utils, forms
@@ -339,3 +341,15 @@ def month_view(
     return render(request, template, data)
 
 
+def SlotAdd(request, title, occid, xid):
+    if title:
+        #a = Event.objects.get(id=x_id)
+        a = Event.objects.all()
+        for i in a:
+            if i.title == title:
+                i.slots += 1
+                i.save()
+            #i.slots += 1
+            #i.save()
+
+    return HttpResponseRedirect('/swingtime/karate/swingtime/events/%s/%s/' % (xid, occid))
