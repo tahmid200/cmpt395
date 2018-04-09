@@ -72,6 +72,7 @@ class SignUpAdmin(generic.CreateView):
 def SignUpClass(request):
 
     classinfo = EventType.objects.all()
+
     length = len(classinfo)
     classes = []
     for i in range(length):
@@ -82,8 +83,13 @@ def SignUpClass(request):
         # check whether it's valid:
         if form.is_valid():
             # redirect to a new URL:
+
             classroom = request.POST.get('classroom','')
             classObj = EventType(label = classroom)
+            #counter = EventType.objects.get(label=classroom)
+            #classObj = EventType(col = length -1 )
+            classObj.col = length
+            #counter.save()
             classObj.save()
 
             #messages.success(request, "Success!")

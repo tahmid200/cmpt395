@@ -64,6 +64,7 @@ class EventType(models.Model):
     Simple ``Event`` classifcation.
     '''
     abbr = models.CharField(_('abbreviation'), max_length=4, unique=False)
+    col = models.IntegerField(default=0)
     label = models.CharField(_('label'), max_length=50)
     #slots = models.IntegerField(default=3)
     objects = models.Manager()

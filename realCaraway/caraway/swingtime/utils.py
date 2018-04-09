@@ -179,9 +179,9 @@ def create_timeslot_table(
                     row = timeslots.get(rowkey, None)
                     if row is None:
                         break
-                    
+
                     # we might want to put a sanity check in here to ensure that
-                    # we aren't trampling some other entry, but by virtue of 
+                    # we aren't trampling some other entry, but by virtue of
                     # sorting all occurrence that shouldn't happen
                     row[colkey] = proxy
                     current += time_delta
