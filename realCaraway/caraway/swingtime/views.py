@@ -379,7 +379,7 @@ def SlotAdd(request, title, occid, xid, start, end):
                 a.slots -= 1
                 a.save()
                 for video in lol:
-                    if video.username == request.user.usernamee:
+                    if video.username == request.user.username:
                         video.total_hours += counter
                         video.curent_hours += counter
                         video.save()
