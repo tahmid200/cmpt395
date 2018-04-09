@@ -13,10 +13,9 @@
         <thead>
             <tr>
                 <th class="center">Time</th>
-                <th>Class Room 1</th>
-                <th>Class Room 2</th>
-                <th>Class Room  3</th>
-                <th colspan="4">Class Room 4</th>
+                {% for g in classroom %}
+                <th>{{ g.label }}</th>
+                {% endfor %}
             </tr>
         </thead>
         <tbody>

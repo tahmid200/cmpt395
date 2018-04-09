@@ -11,7 +11,7 @@ from django.template.context import RequestContext
 from django.shortcuts import get_object_or_404, render
 from django.urls import path
 
-from .models import Event, Occurrence
+from .models import Event, Occurrence,EventType
 from . import utils, forms
 from .conf import swingtime_settings
 User = get_user_model()
@@ -215,12 +215,14 @@ def _datetime_view(
     '''
     timeslot_factory = timeslot_factory or utils.create_timeslot_table
     params = params or {}
-    
+    classroom = EventType.objects.all()
+
     return render(request, template, {
         'day':       dt,
         'next_day':  dt + timedelta(days=+1),
         'prev_day':  dt + timedelta(days=-1),
-        'timeslots': timeslot_factory(dt, items, **params)
+        'timeslots': timeslot_factory(dt, items, **params),
+        'classroom': classroom
     })
 
 
