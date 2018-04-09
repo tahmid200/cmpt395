@@ -146,3 +146,10 @@ def ParentTile(request):
         return render(request, 'parentTile.html', {'hours': hours, 'total': total})
 #--------------------------------------------------------------------------------------------
 
+def UserHours(request):
+    User = ParentCreation.objects.all()
+    length = len(User)
+    return render(request, 'userhours.html', {'User': User, 'length': length})
+
+
+

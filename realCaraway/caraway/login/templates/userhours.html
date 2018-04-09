@@ -1,0 +1,19 @@
+{% extends "baseswingtime.html" %}
+{% load staticfiles %}
+{% block title %}Daily View{% endblock %}
+{% block main_content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Current User's and their hours</title>
+</head>
+<body>
+{% for j in User %}
+    <h3> {{ j.username }}</h3>
+    <p>Current Hours: {{ j.curent_hours }}</p>
+{% endfor %}
+</body>
+</html>
+
+{% endblock %}
