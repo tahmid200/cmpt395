@@ -10,7 +10,7 @@ from django.http import HttpResponseRedirect
 from django.template.context import RequestContext
 from django.shortcuts import get_object_or_404, render
 from django.urls import path
-
+from login.models import ParentCreation
 from .models import Event, Occurrence,EventType
 from . import utils, forms
 from .conf import swingtime_settings
@@ -130,10 +130,11 @@ def occurrence_view(
     else:
         form = form_class(instance=occurrence)
     Volunteer = Event.objects.all()
-    #Start = occurrence.start_time.time().hour
+    StartTime = occurrence.start_time.time().hour
+    EndTime = occurrence.end_time.time().hour
     start = occurrence.start_time
     end = occurrence.end_time
-    return render(request, template, {'occurrence': occurrence, 'form': form, 'Volunteer':Volunteer,'start':start,'end':end})
+    return render(request, template, {'occurrence': occurrence, 'form': form, 'Volunteer':Volunteer,'start':start,'end':end, 'StartTime':StartTime, 'EndTime':EndTime})
 
 
 def add_event(
@@ -343,13 +344,15 @@ def month_view(
     return render(request, template, data)
 
 
-def SlotAdd(request, title, occid, xid):
+def SlotAdd(request, title, occid, xid, start, end):
     if title:
         #a = Event.objects.get(id=x_id)
         a = Event.objects.get(id=xid)
+        lol = ParentCreation.objects.all()
         #for i in a:
             #i.slots -=1
             #i.save()
+        counter = int(end) - int(start)
         if a.title == title:
             if a.slots == 0:
                 a.save()
@@ -357,16 +360,30 @@ def SlotAdd(request, title, occid, xid):
                 a.slot1 = request.user.username
                 a.slots -= 1
                 a.save()
+                for video in lol:
+                    if video.username == request.user.username:
+                        video.total_hours += counter
+                        video.curent_hours += counter
+                        video.save()
             elif not a.slot2:
                 a.slot2 = request.user.username
                 a.slots -= 1
                 a.save()
+                for video in lol:
+                    if video.username == request.user.username:
+                        video.total_hours += counter
+                        video.curent_hours += counter
+                        video.save()
             elif not a.slot3:
                 a.slot3 = request.user.username
                 a.slots -= 1
                 a.save()
-
+                for video in lol:
+                    if video.username == request.user.usernamee:
+                        video.total_hours += counter
+                        video.curent_hours += counter
+                        video.save()
             #i.slots += 1
             #i.save()
-    #return HttpResponseRedirect('/swingtime/karate/swingtime/events/%s/%s/' % (a.title, title))
+    #return HttpResponseRedirect('/swingtime/karate/swingtime/events/%s/%s/' % (a.title, request.user.username))
     return HttpResponseRedirect('/swingtime/karate/swingtime/events/%s/%s/' % (xid, occid))

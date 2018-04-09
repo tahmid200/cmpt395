@@ -61,7 +61,7 @@
                 {% if x.slots == 0 %}
                     <h5> No slots available for this classroom </h5>
                 {% elif user.username not in x.slot1 and user.username not in x.slot2 and user.username not in x.slot3 %}
-                    <p><a href="{% url 'slotadd' x.title occurrence.id x.id %}">Signup</a></p>
+                    <p><a href="{% url 'slotadd' x.title occurrence.id x.id StartTime EndTime %}">Signup</a></p>
                 {% elif user.username in x.slot1 or user.username in x.slot2 or user.username in x.slot3 %}
                     <p>You are signed up for this class!</p>
                 {% endif %}

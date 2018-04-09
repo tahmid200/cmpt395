@@ -10,7 +10,7 @@ urlpatterns = [
         name='swingtime-today'
     ),
 
-    url(r'^like/(\w+)/(\d+)/(\d+)$', views.SlotAdd, name='slotadd'),
+    url(r'^like/(\w+)/(\d+)/(\d+)/(\d+)/(\d+)$', views.SlotAdd, name='slotadd'),
 
     url(
         r'^calendar/(?P<year>\d{4})/$', 
