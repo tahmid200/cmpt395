@@ -28,7 +28,7 @@ SECRET_KEY = 'm88p&qna&0&wexvr#4vvj=zr!r7&o+p@m8w&kpg!#4dv16^@2u'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-admin.site.site_url = '/login'
+admin.site.site_url = '/users/hometile/'
 ALLOWED_HOSTS = ['*']
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

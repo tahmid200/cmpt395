@@ -344,12 +344,27 @@ def month_view(
 def SlotAdd(request, title, occid, xid):
     if title:
         #a = Event.objects.get(id=x_id)
-        a = Event.objects.all()
-        for i in a:
-            if i.title == title:
-                i.slots += 1
-                i.save()
+        a = Event.objects.get(id=xid)
+        #for i in a:
+            #i.slots -=1
+            #i.save()
+        if a.title == title:
+            if a.slots == 0:
+                a.save()
+            elif not a.slot1:
+                a.slot1 = request.user.username
+                a.slots -= 1
+                a.save()
+            elif not a.slot2:
+                a.slot2 = request.user.username
+                a.slots -= 1
+                a.save()
+            elif not a.slot3:
+                a.slot3 = request.user.username
+                a.slots -= 1
+                a.save()
+
             #i.slots += 1
             #i.save()
-
+    #return HttpResponseRedirect('/swingtime/karate/swingtime/events/%s/%s/' % (a.title, title))
     return HttpResponseRedirect('/swingtime/karate/swingtime/events/%s/%s/' % (xid, occid))

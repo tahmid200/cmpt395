@@ -52,10 +52,19 @@
      </form>
 {% else %}
     {% for x in Volunteer %}
-        {% if x.title == occurrence.title%}
+        {% if x.title == occurrence.title %}
             <div class="center">
-            <h4>Timeslots: {{ x.slots }} </h4>
-            <p><a href="{% url 'slotadd' x.title occurrence.id x.id %}">Signup</a></p>
+            <h4>Timeslots Available: {{ x.slots }} </h4>
+                <h5>Slot 1: {{ x.slot1 }}</h5>
+                <h5>Slot 2: {{ x.slot2 }}</h5>
+                <h5>Slot 3: {{ x.slot3 }}</h5>
+                {% if x.slots == 0 %}
+                    <h5> No slots available for this classroom </h5>
+                {% elif user.username not in x.slot1 and user.username not in x.slot2 and user.username not in x.slot3 %}
+                    <p><a href="{% url 'slotadd' x.title occurrence.id x.id %}">Signup</a></p>
+                {% elif user.username in x.slot1 or user.username in x.slot2 or user.username in x.slot3 %}
+                    <p>You are signed up for this class!</p>
+                {% endif %}
             </div>
             <h4>Start Time: {{ start }}</h4>
             <h4>End Time: {{ end }}</h4>
